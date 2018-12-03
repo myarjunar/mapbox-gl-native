@@ -16,8 +16,7 @@ bool isExpression(const Convertible& value) {
     optional<std::string> name = toString(arrayMember(value, 0));
     if (!name) return false;
     
-    return getExpression(*name) ||
-        (CompoundExpressionRegistry::definitions.find(*name) != CompoundExpressionRegistry::definitions.end());
+    return getExpression(*name) || CompoundExpression::exists(*name);
 }
 
 
